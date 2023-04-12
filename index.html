@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    
+    }
+    body {
+      margin:0;
+    }
+    h2 {
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color:red;
+      font-size:30px;
+    }
+    .parent {
+      background-color:blueviolet;
+      display:flex;
+      flex-direction: column;
+      padding:25px;
+      margin:0;
+    
+    }
+    form {
+      margin-left:200px;
+    }
+    label,.sual {
+      color:white;
+      font-size:18px;
+    }
+    .buttonParent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+    }
+    button {
+      width:80px;
+      height:40px;
+      background-color:white;
+      color:black;
+      border-radius:10px;
+      font-size:16px;
+      border:1px solid white;
+      cursor: pointer;
+    }
+   
+    .son {
+      color:black;
+      text-align:center;
+      font-size:25px;
+      color:blue;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+   
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Evden Çalışma Anketi</h2>
+  </div>
+  <div class="parent">
+    <form>
+      <div>
+      <p class="sual">1.Ofiste daha verimli çalışıyorsun?</p>
+     <input type="radio" id="birinci1" value="Yes" name="first">
+     <label for="birinci1">Evet</label>
+     <input type="radio" id="birinci2" value="No" name="first">
+     <label for="birinci2">Hayır</label>
+    </div>
+    <div>
+      <p class="sual">2.Ofise tam zamanlı donmek istiyorum?</p>
+     <input type="radio" id="ikinci1" value="Yes" name="second">
+     <label for="ikinci1">Evet</label>
+     <input type="radio" id="ikinci2" value="No" name="second">
+     <label for="ikinci2">Hayır</label>
+    </div>
+    <div>
+      <p class="sual">3.Evden teknik sorunlar daha zor çözülüyor?</p>
+     <input type="radio" id="ucuncu1" value="Yes" name="third">
+     <label for="ucuncu1">Evet</label>
+     <input type="radio" id="ucuncu2" value="No" name="third">
+     <label for="ucuncu2">Hayır</label>
+    </div>
+    <div>
+      <p class="sual">4.Evdeyken Jiradakı haftalık taskları yetiştirmekle zorlanıyorum?</p>
+     <input type="radio" id="dorduncu1" value="Yes" name="fourth">
+     <label for="dorduncu1">Evet</label>
+     <input type="radio" id="dorduncu2" value="No" name="fourth">
+     <label for="dorduncu2">Hayır</label>
+    </div>
+    <div class="buttonParent">  <button>Submit</button></div>
+  
+    </form>
+
+  </div>
+  <p class="son"></p>
+  <script>
+  let son=document.querySelector('.son')
+    let submit=document.querySelector('button');
+    let form=document.querySelector('form');
+    submit.addEventListener('click',e=>{
+      let output='';
+      let counter=0;
+      let massiv=[]
+      const formdata=new FormData(form);
+      for(let data of formdata){
+      output+=data[1]+' ';
+      massiv.push(output);
+      }
+      const split= massiv[massiv.length-1].split(' ');
+      for(let i=0;i<split.length;i++){
+       if(split[i]=='Yes'){
+        counter+=25
+       }
+      }
+     
+      son.innerHTML=counter+'%  ofise dönmek istiyorum'
+      event.preventDefault()
+    })
+  
+
+  </script>
+</body>
+</html>
